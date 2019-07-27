@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
+  "scripts": {
+    "start": "./node_modules/.bin/lsc index.ls"
+  },
   "dependencies": {
     "livescript": "^1.6.0",
     "lodash": "^4.17.15",
