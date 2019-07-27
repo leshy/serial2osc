@@ -12,7 +12,6 @@ console.log "serial port: ", serial
 console.log "ip: ", ip
 console.log "UDP port: ", port
 
-
 oscPort = new osc.UDPPort do
     remoteAddress: ip,
     remotePort: port,
@@ -28,6 +27,11 @@ oscPort.on "ready", ->
 
   serialport = new Serial serial, autoOpen: true
   parser = serialport.pipe new Readline delimiter: '\r\n'
+  
   parser.on 'data', ->
-    console.log ">", String it
-    sendVal Number String it
+    data = String it
+
+    number = Number data.split(' ')[2]
+      
+    console.log ">", number
+    sendVal number
