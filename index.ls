@@ -4,11 +4,10 @@ require! {
   "@serialport/parser-readline": Readline
 }
 
-
-oscPort = new osc.WebSocketPort(
-    url: "ws://localhost:8081",
+oscPort = new osc.UDPPort do
+    remoteAddress: "127.0.0.1",
+    remotePort: 4149,
     metadata: true
-      )
 
 oscPort.open()
 
@@ -20,6 +19,7 @@ oscPort.on "ready", ->
 
   serialport = new Serial '/dev/ttyUSB0', autoOpen: true
   parser = port.pipe new Readline delimiter: '\r\n'
+  
   parser.on 'data', ->
-    console.log it
-    sendVal Number it
+    console.log ">", String it
+    sendVal Number String it
