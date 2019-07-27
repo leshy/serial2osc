@@ -5,6 +5,7 @@
   "license": "MIT",
   "dependencies": {
     "livescript": "^1.6.0",
+    "lodash": "^4.17.15",
     "osc": "^2.3.1",
     "serialport": "^7.1.5"
   }
